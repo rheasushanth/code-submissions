@@ -6,12 +6,12 @@ class Solution(object):
         """
         left = 0
         best = 0
-        st = ""
+        st = set()
         for right in range(len(s)):
-            st+=s[right]
-            while len(st) != len(set(st)):
-                st = st.replace(s[left],"",1)
+            while s[right] in st: 
+                st.remove(s[left])
                 left += 1
+            st.add(s[right])
             best = max(best, right - left + 1)
         return best
 
